@@ -1,0 +1,29 @@
+.row {
+    margin: 10px 0;
+}
+header {
+    height: 100px;
+    background-color:#e3e3e3;
+}
+.title {
+    text-align: center;
+    padding: 20px;
+}
+#search-column {
+    min-height: 400px;
+}
+#weather-column {
+    min-height: 400px;
+}
+#cities-view {
+    margin-top: 25px;
+}
+button.city-btn {
+    width: 100%;
+    margin: 5px 0;
+    border-radius: 5px;
+    border: 1px solid black;
+}
+#forecast-container {
+    min-height: 300px;
+}
