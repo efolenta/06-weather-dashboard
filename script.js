@@ -23,21 +23,31 @@ function displayCityData() {
     
     // City name
     var cityName = $("<h1>").text(response.name);
-    weatherDiv.append(cityName);
+    
     // Weather Icon
     var weatherIcon = $("<img>").attr("src", "https://openweathermap.org/img/wn/" + response.weather[0].icon + "@2x.png");
-    weatherDiv.append(weatherIcon);
     // Wind Speed
     var wind = $("<p>").text("Wind Speed: " + response.wind.speed + "mph");
-    weatherDiv.append(wind);
     // Humidity
     var humidity = $("<p>").text("Humidity: " + response.main.humidity + "%");
-    weatherDiv.append(humidity);
     // Temperature converted into F
     var tempF = Math.floor((response.main.temp - 273.15) * 1.80 + 32);
     var temp = $("<p>").html("Temperature: " + tempF + "&deg;F");
+
+    // Feels Like Temp converted into F
+    var feelLikeTempF = Math.floor((response.main.feels_like - 273.15) * 1.80 + 32);
+    var feelsLike = $("<p>").html("Feels Like: " + feelLikeTempF + "&deg;F");
+
+    // Add variables to html div
+    weatherDiv.append(cityName);
+    weatherDiv.append(weatherIcon);
     weatherDiv.append(temp);
-    
+    weatherDiv.append(feelsLike);
+    weatherDiv.append(wind);
+    weatherDiv.append(humidity);
+
+
+
     $("#weather-column").prepend(weatherDiv);
 
   });
@@ -53,7 +63,7 @@ function displayCityData() {
 
     var forecast = response2.list;
 
-    for (var i = 0; i < 5; i++) {
+    for (var i = 5; i < forecast.length; i+=8) {
         
         // Gathering all the weather data for each loop
         var forecastDate = $("<h3>").text(forecast[i].dt_txt);
